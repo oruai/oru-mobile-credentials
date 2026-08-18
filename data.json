@@ -1,40 +1,160 @@
 {
-  "updatedAt": "2026-08-17T15:00:00-05:00",
+  "updatedAt": "2026-08-18T15:00:00-05:00",
   "credentials": {
-    "total": 2245,
+    "total": 2470,
     "population": {
-      "student": 1914,
-      "staff": 252,
-      "faculty": 76,
+      "student": 2126,
+      "staff": 260,
+      "faculty": 81,
       "other": 3
     },
     "classBreakdown": [
-      { "name": "Freshman", "curfew": 562, "standard": 162, "total": 724 },
-      { "name": "Sophomore", "curfew": 70, "standard": 424, "total": 494 },
-      { "name": "Junior", "curfew": 10, "standard": 360, "total": 370 },
-      { "name": "Senior", "curfew": 1, "standard": 242, "total": 243 }
+      {
+        "name": "Freshman",
+        "curfew": 577,
+        "standard": 186,
+        "total": 763
+      },
+      {
+        "name": "Sophomore",
+        "curfew": 73,
+        "standard": 491,
+        "total": 564
+      },
+      {
+        "name": "Junior",
+        "curfew": 10,
+        "standard": 405,
+        "total": 415
+      },
+      {
+        "name": "Senior",
+        "curfew": 1,
+        "standard": 281,
+        "total": 282
+      }
     ],
     "rows": [
-      { "type": "Student Freshman Curfew", "population": "Student", "status": "Curfew", "count": 562 },
-      { "type": "Student Sophomore", "population": "Student", "status": "Standard", "count": 424 },
-      { "type": "Student Junior", "population": "Student", "status": "Standard", "count": 360 },
-      { "type": "Staff", "population": "Staff", "status": "Standard", "count": 248 },
-      { "type": "Student Senior", "population": "Student", "status": "Standard", "count": 242 },
-      { "type": "Student Freshman", "population": "Student", "status": "Standard", "count": 162 },
-      { "type": "Faculty", "population": "Faculty", "status": "Standard", "count": 76 },
-      { "type": "Student Sophomore Curfew", "population": "Student", "status": "Curfew", "count": 70 },
-      { "type": "Student Graduate", "population": "Student", "status": "Standard", "count": 39 },
-      { "type": "Student", "population": "Student", "status": "Standard", "count": 22 },
-      { "type": "Student Professional", "population": "Student", "status": "Standard", "count": 13 },
-      { "type": "Student Junior Curfew", "population": "Student", "status": "Curfew", "count": 10 },
-      { "type": "Student Graduate Education/Doctorate", "population": "Student", "status": "Standard", "count": 5 },
-      { "type": "Other", "population": "Other", "status": "Standard", "count": 3 },
-      { "type": "Staff Senior", "population": "Staff", "status": "Standard", "count": 3 },
-      { "type": "Student PhD", "population": "Student", "status": "Standard", "count": 2 },
-      { "type": "Staff Graduate", "population": "Staff", "status": "Standard", "count": 1 },
-      { "type": "Student Doctor of Nursing", "population": "Student", "status": "Standard", "count": 1 },
-      { "type": "Student Doctorate Arts and Cultural", "population": "Student", "status": "Standard", "count": 1 },
-      { "type": "Student Senior Curfew", "population": "Student", "status": "Curfew", "count": 1 }
+      {
+        "type": "Student Freshman Curfew",
+        "population": "Student",
+        "status": "Curfew",
+        "count": 577
+      },
+      {
+        "type": "Student Sophomore",
+        "population": "Student",
+        "status": "Standard",
+        "count": 491
+      },
+      {
+        "type": "Student Junior",
+        "population": "Student",
+        "status": "Standard",
+        "count": 405
+      },
+      {
+        "type": "Staff",
+        "population": "Staff",
+        "status": "Standard",
+        "count": 255
+      },
+      {
+        "type": "Student Senior",
+        "population": "Student",
+        "status": "Standard",
+        "count": 281
+      },
+      {
+        "type": "Student Freshman",
+        "population": "Student",
+        "status": "Standard",
+        "count": 186
+      },
+      {
+        "type": "Faculty",
+        "population": "Faculty",
+        "status": "Standard",
+        "count": 81
+      },
+      {
+        "type": "Student Sophomore Curfew",
+        "population": "Student",
+        "status": "Curfew",
+        "count": 73
+      },
+      {
+        "type": "Student Graduate",
+        "population": "Student",
+        "status": "Standard",
+        "count": 47
+      },
+      {
+        "type": "Student",
+        "population": "Student",
+        "status": "Standard",
+        "count": 24
+      },
+      {
+        "type": "Student Professional",
+        "population": "Student",
+        "status": "Standard",
+        "count": 21
+      },
+      {
+        "type": "Student Junior Curfew",
+        "population": "Student",
+        "status": "Curfew",
+        "count": 10
+      },
+      {
+        "type": "Student Graduate Education/Doctorate",
+        "population": "Student",
+        "status": "Standard",
+        "count": 4
+      },
+      {
+        "type": "Other",
+        "population": "Other",
+        "status": "Standard",
+        "count": 3
+      },
+      {
+        "type": "Staff Senior",
+        "population": "Staff",
+        "status": "Standard",
+        "count": 4
+      },
+      {
+        "type": "Student PhD",
+        "population": "Student",
+        "status": "Standard",
+        "count": 3
+      },
+      {
+        "type": "Staff Graduate",
+        "population": "Staff",
+        "status": "Standard",
+        "count": 1
+      },
+      {
+        "type": "Student Doctor of Nursing",
+        "population": "Student",
+        "status": "Standard",
+        "count": 1
+      },
+      {
+        "type": "Student Doctorate Arts and Cultural",
+        "population": "Student",
+        "status": "Standard",
+        "count": 2
+      },
+      {
+        "type": "Student Senior Curfew",
+        "population": "Student",
+        "status": "Curfew",
+        "count": 1
+      }
     ]
   },
   "mfa": {
@@ -42,17 +162,50 @@
     "registered": 4117,
     "notRegistered": 213,
     "notRegisteredByClassification": [
-      { "name": "Freshman", "count": 65 },
-      { "name": "Senior", "count": 46 },
-      { "name": "Sophomore", "count": 29 },
-      { "name": "Graduate", "count": 23 },
-      { "name": "Junior", "count": 16 },
-      { "name": "Professional", "count": 12 },
-      { "name": "Doctorate Arts & Cultural", "count": 10 },
-      { "name": "Graduate Education/Doctorate", "count": 7 },
-      { "name": "PhD", "count": 3 },
-      { "name": "Doctor of Nursing", "count": 1 },
-      { "name": "Unknown", "count": 1 }
+      {
+        "name": "Freshman",
+        "count": 65
+      },
+      {
+        "name": "Senior",
+        "count": 46
+      },
+      {
+        "name": "Sophomore",
+        "count": 29
+      },
+      {
+        "name": "Graduate",
+        "count": 23
+      },
+      {
+        "name": "Junior",
+        "count": 16
+      },
+      {
+        "name": "Professional",
+        "count": 12
+      },
+      {
+        "name": "Doctorate Arts & Cultural",
+        "count": 10
+      },
+      {
+        "name": "Graduate Education/Doctorate",
+        "count": 7
+      },
+      {
+        "name": "PhD",
+        "count": 3
+      },
+      {
+        "name": "Doctor of Nursing",
+        "count": 1
+      },
+      {
+        "name": "Unknown",
+        "count": 1
+      }
     ],
     "methodology": "\"MFA registered\" indicates Microsoft Authenticator Push is listed in the supplied registration export."
   },
