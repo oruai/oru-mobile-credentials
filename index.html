@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORU Mobile Credential Dashboard</title>
+<style>
+  .viz-root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --plane:          #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --grid:           #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --series-1:       #2a78d6; /* Student */
+    --series-2:       #eb6834; /* Staff */
+    --series-3:       #1baf7a; /* Faculty */
+    --series-4:       #eda100; /* Other */
+    --status-good:    #0ca30c;
+    --status-warning: #fab219;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .viz-root {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --plane:          #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --grid:           #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --series-1:       #3987e5;
+      --series-2:       #d95926;
+      --series-3:       #199e70;
+      --series-4:       #c98500;
+      --status-good:    #0ca30c;
+      --status-warning: #fab219;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--plane);
+    color: var(--text-primary);
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 20px 64px; }
+  header.page-head { margin-bottom: 28px; }
+  header.page-head h1 { font-size: 26px; margin: 0 0 4px; }
+  header.page-head p { margin: 0; color: var(--text-secondary); font-size: 15px; }
+  header.page-head .updated { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+
+  section { margin-bottom: 40px; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  .section-sub { color: var(--text-secondary); font-size: 14px; margin: 0 0 16px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .stat-tile {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-tile .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
+  .stat-tile .value { font-size: 26px; font-weight: 600; margin-top: 4px; }
+  .stat-tile .sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+
+  /* Population mix — stacked bar (donut deprioritized per dataviz guidance) */
+  .stack-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+  .stack-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 600; min-width: 2px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-secondary); }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* Class breakdown grouped bars */
+  .class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .class-card { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .class-card .name { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
+  .class-card .total { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .mini-bar { display: flex; height: 10px; border-radius: 4px; overflow: hidden; margin-bottom: 6px; background: var(--grid); }
+  .mini-bar .curfew { background: var(--series-1); }
+  .mini-bar .standard { background: var(--series-4); }
+  .class-card .breakdown { font-size: 12px; color: var(--text-muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { text-align: left; padding: 10px 12px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--grid); cursor: pointer; user-select: none; white-space: nowrap; }
+  thead th.num, tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  thead th .arrow { font-size: 11px; margin-left: 4px; color: var(--text-muted); }
+  tbody td { padding: 8px 12px; border-bottom: 1px solid var(--grid); }
+  tbody tr:hover { background: var(--plane); }
+
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-secondary); }
+
+  .mfa-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .mfa-status { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot.good { background: var(--status-good); }
+  .dot.warning { background: var(--status-warning); }
+
+  .not-reg-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .not-reg-list .row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; }
+  .not-reg-list .row .n { color: var(--text-secondary); }
+  .not-reg-list .row .c { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  footer { color: var(--text-muted); font-size: 12px; margin-top: 24px; border-top: 1px solid var(--grid); padding-top: 16px; }
+  .toggle-table { font-size: 12px; color: var(--text-secondary); background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="viz-root">
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Mobile Credential Counts by Type</h1>
+      <p>A clear snapshot of active mobile credentials.</p>
+      <div class="updated" id="updatedAt"></div>
+    </header>
+
+    <section id="summary">
+      <div class="stat-row" id="statRow"></div>
+      <div class="card">
+        <h2 style="margin-bottom:12px;">Population Mix</h2>
+        <div class="stack-bar" id="stackBar"></div>
+        <div class="legend" id="stackLegend"></div>
+      </div>
+    </section>
+
+    <section id="classes">
+      <h2>Undergraduate Credentials</h2>
+      <p class="section-sub">Curfew vs. standard credentials by class year.</p>
+      <div class="class-grid" id="classGrid"></div>
+    </section>
+
+    <section id="table-section">
+      <h2>All Credential Types</h2>
+      <p class="section-sub">Click a column header to sort.</p>
+      <div class="card">
+        <table id="credTable">
+          <thead>
+            <tr>
+              <th data-key="type">Credential type<span class="arrow"></span></th>
+              <th data-key="population">Population<span class="arrow"></span></th>
+              <th data-key="status">Status<span class="arrow"></span></th>
+              <th data-key="count" class="num">Count<span class="arrow"></span></th>
+              <th data-key="pct" class="num">% of total<span class="arrow"></span></th>
+            </tr>
+          </thead>
+          <tbody id="credTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="mfa">
+      <h2>MFA Dashboard</h2>
+      <p class="section-sub">A clear view of student MFA registration status.</p>
+      <div class="card">
+        <div class="mfa-row" id="mfaSummary"></div>
+        <h2 style="font-size:15px; margin-bottom:10px;">Not registered, by classification</h2>
+        <div class="not-reg-list" id="notRegList"></div>
+      </div>
+    </section>
+
+    <footer id="footer"></footer>
+  </div>
+</div>
+
+<script>
+async function main() {
+  const res = await fetch('data.json', { cache: 'no-store' });
+  const data = await res.json();
+  const c = data.credentials;
+  const mfa = data.mfa;
+
+  document.getElementById('updatedAt').textContent =
+    'Updated ' + new Date(data.updatedAt).toLocaleString('en-US', {
+      dateStyle: 'long', timeStyle: 'short'
+    });
+
+  // Stat tiles
+  const pop = c.population;
+  const statRow = document.getElementById('statRow');
+  const pct = (n) => (100 * n / c.total).toFixed(1) + '%';
+  const stats = [
+    { label: 'Total credentials', value: c.total.toLocaleString(), sub: 'across ' + c.rows.length + ' types' },
+    { label: 'Students', value: pop.student.toLocaleString(), sub: pct(pop.student) },
+    { label: 'Staff', value: pop.staff.toLocaleString(), sub: pct(pop.staff) },
+    { label: 'Faculty', value: pop.faculty.toLocaleString(), sub: pct(pop.faculty) },
+    { label: 'Other', value: pop.other.toLocaleString(), sub: pct(pop.other) },
+  ];
+  statRow.innerHTML = stats.map(s =>
+    `<div class="stat-tile"><div class="label">${s.label}</div><div class="value">${s.value}</div><div class="sub">${s.sub}</div></div>`
+  ).join('');
+
+  // Population mix stacked bar
+  const segments = [
+    { name: 'Student', value: pop.student, color: 'var(--series-1)' },
+    { name: 'Staff', value: pop.staff, color: 'var(--series-2)' },
+    { name: 'Faculty', value: pop.faculty, color: 'var(--series-3)' },
+    { name: 'Other', value: pop.other, color: 'var(--series-4)' },
+  ];
+  const stackBar = document.getElementById('stackBar');
+  stackBar.innerHTML = segments.map(s => {
+    const w = (100 * s.value / c.total);
+    return `<div class="seg" style="width:${w}%; background:${s.color};" title="${s.name}: ${s.value.toLocaleString()} (${w.toFixed(1)}%)">${w > 8 ? w.toFixed(0) + '%' : ''}</div>`;
+  }).join('');
+  document.getElementById('stackLegend').innerHTML = segments.map(s =>
+    `<span class="item"><span class="swatch" style="background:${s.color};"></span>${s.name} — ${s.value.toLocaleString()} (${pct(s.value)})</span>`
+  ).join('');
+
+  // Class breakdown
+  const classGrid = document.getElementById('classGrid');
+  classGrid.innerHTML = c.classBreakdown.map(cl => {
+    const curfewPct = 100 * cl.curfew / cl.total;
+    return `<div class="class-card">
+      <div class="name">${cl.name}</div>
+      <div class="total">${cl.total.toLocaleString()}</div>
+      <div class="mini-bar"><div class="curfew" style="width:${curfewPct}%"></div><div class="standard" style="width:${100 - curfewPct}%"></div></div>
+      <div class="breakdown">${cl.curfew.toLocaleString()} curfew &middot; ${cl.standard.toLocaleString()} standard</div>
+    </div>`;
+  }).join('');
+
+  // Sortable table
+  const rows = c.rows.map(r => ({ ...r, pct: 100 * r.count / c.total }));
+  let sortKey = 'count', sortDir = -1;
+  const tbody = document.getElementById('credTableBody');
+  function render() {
+    const sorted = [...rows].sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (typeof av === 'number') return (av - bv) * sortDir;
+      return String(av).localeCompare(String(bv)) * sortDir;
+    });
+    tbody.innerHTML = sorted.map(r => `<tr>
+      <td>${r.type}</td>
+      <td>${r.population}</td>
+      <td><span class="badge">${r.status}</span></td>
+      <td class="num">${r.count.toLocaleString()}</td>
+      <td class="num">${r.pct.toFixed(1)}%</td>
+    </tr>`).join('');
+    document.querySelectorAll('#credTable thead th').forEach(th => {
+      const arrow = th.querySelector('.arrow');
+      arrow.textContent = th.dataset.key === sortKey ? (sortDir === 1 ? '▲' : '▼') : '';
+    });
+  }
+  document.querySelectorAll('#credTable thead th').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; }
+      render();
+    });
+  });
+  render();
+
+  // MFA
+  const mfaSummary = document.getElementById('mfaSummary');
+  mfaSummary.innerHTML = `
+    <div class="stat-tile"><div class="label">Records evaluated</div><div class="value">${mfa.evaluated.toLocaleString()}</div></div>
+    <div class="mfa-status"><span class="dot good"></span>Registered: <strong>${mfa.registered.toLocaleString()}</strong> (${(100*mfa.registered/mfa.evaluated).toFixed(1)}%)</div>
+    <div class="mfa-status"><span class="dot warning"></span>Not registered: <strong>${mfa.notRegistered.toLocaleString()}</strong> (${(100*mfa.notRegistered/mfa.evaluated).toFixed(1)}%)</div>
+  `;
+  document.getElementById('notRegList').innerHTML = mfa.notRegisteredByClassification.map(n =>
+    `<div class="row"><span class="n">${n.name}</span><span class="c">${n.count}</span></div>`
+  ).join('');
+
+  document.getElementById('footer').innerHTML =
+    `${data.methodology} ${mfa.methodology}`;
+}
+main();
+</script>
+</body>
+</html>
