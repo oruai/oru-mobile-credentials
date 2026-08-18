@@ -46,67 +46,67 @@
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   .viz-root { display: block; min-height: 100vh; background: var(--plane); color: var(--text-primary); }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 20px 64px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px 72px; font-size: 18px; }
   header.page-head { margin-bottom: 28px; }
-  header.page-head h1 { font-size: 26px; margin: 0 0 4px; }
-  header.page-head p { margin: 0; color: var(--text-secondary); font-size: 15px; }
-  header.page-head .updated { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+  header.page-head h1 { font-size: 38px; margin: 0 0 8px; }
+  header.page-head p { margin: 0; color: var(--text-secondary); font-size: 20px; }
+  header.page-head .updated { color: var(--text-secondary); font-size: 16px; margin-top: 10px; }
 
   section { margin-bottom: 40px; }
-  h2 { font-size: 18px; margin: 0 0 4px; }
-  .section-sub { color: var(--text-secondary); font-size: 14px; margin: 0 0 16px; }
+  h2 { font-size: 26px; margin: 0 0 8px; }
+  .section-sub { color: var(--text-secondary); font-size: 18px; margin: 0 0 20px; }
 
   .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
   .stat-tile {
     background: var(--surface-1);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 14px 16px;
+    padding: 20px 22px;
   }
-  .stat-tile .label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; }
-  .stat-tile .value { font-size: 26px; font-weight: 600; margin-top: 4px; }
-  .stat-tile .sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .stat-tile .label { font-size: 15px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  .stat-tile .value { font-size: 42px; font-weight: 700; margin-top: 6px; }
+  .stat-tile .sub { font-size: 17px; color: var(--text-secondary); margin-top: 4px; }
 
   .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
 
   /* Population mix — stacked bar (donut deprioritized per dataviz guidance) */
   .stack-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
   .stack-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 600; min-width: 2px; }
-  .legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-secondary); }
+  .legend { display: flex; flex-wrap: wrap; gap: 20px; font-size: 18px; color: var(--text-secondary); }
   .legend .item { display: flex; align-items: center; gap: 6px; }
-  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
 
   /* Class breakdown grouped bars */
   .class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
   .class-card { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
-  .class-card .name { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
-  .class-card .total { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .class-card .name { font-size: 18px; color: var(--text-secondary); margin-bottom: 8px; }
+  .class-card .total { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
   .mini-bar { display: flex; height: 10px; border-radius: 4px; overflow: hidden; margin-bottom: 6px; background: var(--grid); }
   .mini-bar .curfew { background: var(--series-1); }
   .mini-bar .standard { background: var(--series-4); }
-  .class-card .breakdown { font-size: 12px; color: var(--text-muted); }
+  .class-card .breakdown { font-size: 16px; color: var(--text-secondary); }
 
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  thead th { text-align: left; padding: 10px 12px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--grid); cursor: pointer; user-select: none; white-space: nowrap; }
+  table { width: 100%; border-collapse: collapse; font-size: 18px; }
+  thead th { text-align: left; padding: 16px 16px; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--grid); cursor: pointer; user-select: none; white-space: nowrap; }
   thead th.num, tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
   thead th .arrow { font-size: 11px; margin-left: 4px; color: var(--text-muted); }
-  tbody td { padding: 8px 12px; border-bottom: 1px solid var(--grid); }
+  tbody td { padding: 16px 16px; border-bottom: 1px solid var(--grid); }
   tbody tr:hover { background: var(--plane); }
 
-  .badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-secondary); }
+  .badge { font-size: 15px; padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-secondary); }
 
   .mfa-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
-  .mfa-status { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+  .mfa-status { display: flex; align-items: center; gap: 10px; font-size: 20px; }
   .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
   .dot.good { background: var(--status-good); }
   .dot.warning { background: var(--status-warning); }
 
   .not-reg-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
-  .not-reg-list .row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; }
+  .not-reg-list .row { display: flex; justify-content: space-between; font-size: 17px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; }
   .not-reg-list .row .n { color: var(--text-secondary); }
   .not-reg-list .row .c { font-weight: 600; font-variant-numeric: tabular-nums; }
 
-  footer { color: var(--text-muted); font-size: 12px; margin-top: 24px; border-top: 1px solid var(--grid); padding-top: 16px; }
+  footer { color: var(--text-secondary); font-size: 15px; margin-top: 24px; border-top: 1px solid var(--grid); padding-top: 16px; }
   .toggle-table { font-size: 12px; color: var(--text-secondary); background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; margin-bottom: 12px; }
 </style>
 </head>
