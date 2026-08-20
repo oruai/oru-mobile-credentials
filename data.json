@@ -163,16 +163,20 @@
     "notRegistered": 213,
     "notRegisteredByClassification": [
       {
-        "name": "Freshman",
-        "count": 65
-      },
-      {
         "name": "Senior",
         "count": 46
       },
       {
+        "name": "Freshman Curfew",
+        "count": 38
+      },
+      {
+        "name": "Freshman",
+        "count": 27
+      },
+      {
         "name": "Sophomore",
-        "count": 29
+        "count": 25
       },
       {
         "name": "Graduate",
@@ -187,12 +191,16 @@
         "count": 12
       },
       {
-        "name": "Doctorate Arts & Cultural",
+        "name": "Doctorate Arts and Cultural",
         "count": 10
       },
       {
         "name": "Graduate Education/Doctorate",
         "count": 7
+      },
+      {
+        "name": "Sophomore Curfew",
+        "count": 4
       },
       {
         "name": "PhD",
