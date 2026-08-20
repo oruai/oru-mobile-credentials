@@ -1,37 +1,37 @@
 {
-  "updatedAt": "2026-08-19T08:00:00-05:00",
+  "updatedAt": "2026-08-20T08:00:00-05:00",
   "credentials": {
-    "total": 2589,
+    "total": 2761,
     "population": {
-      "student": 2247,
-      "staff": 258,
-      "faculty": 81,
+      "student": 2406,
+      "staff": 268,
+      "faculty": 84,
       "other": 3
     },
     "classBreakdown": [
       {
         "name": "Freshman",
-        "curfew": 583,
-        "standard": 203,
-        "total": 786
+        "curfew": 592,
+        "standard": 208,
+        "total": 800
       },
       {
         "name": "Sophomore",
         "curfew": 74,
-        "standard": 527,
-        "total": 601
+        "standard": 569,
+        "total": 643
       },
       {
         "name": "Junior",
-        "curfew": 10,
-        "standard": 430,
-        "total": 440
+        "curfew": 11,
+        "standard": 466,
+        "total": 477
       },
       {
         "name": "Senior",
         "curfew": 1,
-        "standard": 313,
-        "total": 314
+        "standard": 369,
+        "total": 370
       }
     ],
     "rows": [
@@ -39,43 +39,43 @@
         "type": "Student Freshman Curfew",
         "population": "Student",
         "status": "Curfew",
-        "count": 583
+        "count": 592
       },
       {
         "type": "Student Sophomore",
         "population": "Student",
         "status": "Standard",
-        "count": 527
+        "count": 569
       },
       {
         "type": "Student Junior",
         "population": "Student",
         "status": "Standard",
-        "count": 430
-      },
-      {
-        "type": "Staff",
-        "population": "Staff",
-        "status": "Standard",
-        "count": 254
+        "count": 466
       },
       {
         "type": "Student Senior",
         "population": "Student",
         "status": "Standard",
-        "count": 313
+        "count": 369
+      },
+      {
+        "type": "Staff",
+        "population": "Staff",
+        "status": "Standard",
+        "count": 264
       },
       {
         "type": "Student Freshman",
         "population": "Student",
         "status": "Standard",
-        "count": 203
+        "count": 208
       },
       {
         "type": "Faculty",
         "population": "Faculty",
         "status": "Standard",
-        "count": 81
+        "count": 84
       },
       {
         "type": "Student Sophomore Curfew",
@@ -87,25 +87,31 @@
         "type": "Student Graduate",
         "population": "Student",
         "status": "Standard",
-        "count": 50
+        "count": 56
       },
       {
         "type": "Student",
         "population": "Student",
         "status": "Standard",
-        "count": 24
+        "count": 25
       },
       {
         "type": "Student Professional",
         "population": "Student",
         "status": "Standard",
-        "count": 21
+        "count": 22
       },
       {
         "type": "Student Junior Curfew",
         "population": "Student",
         "status": "Curfew",
-        "count": 10
+        "count": 11
+      },
+      {
+        "type": "Student PhD",
+        "population": "Student",
+        "status": "Standard",
+        "count": 5
       },
       {
         "type": "Student Graduate Education/Doctorate",
@@ -126,7 +132,7 @@
         "count": 3
       },
       {
-        "type": "Student PhD",
+        "type": "Student Doctorate Arts and Cultural",
         "population": "Student",
         "status": "Standard",
         "count": 3
@@ -142,12 +148,6 @@
         "population": "Student",
         "status": "Standard",
         "count": 1
-      },
-      {
-        "type": "Student Doctorate Arts and Cultural",
-        "population": "Student",
-        "status": "Standard",
-        "count": 3
       },
       {
         "type": "Student Senior Curfew",
