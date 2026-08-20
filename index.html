@@ -102,9 +102,9 @@
   .dot.warning { background: var(--status-warning); }
 
   .not-reg-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
-  .not-reg-list .row { display: flex; justify-content: space-between; font-size: 17px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; }
-  .not-reg-list .row .n { color: var(--text-secondary); }
-  .not-reg-list .row .c { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .not-reg-list .row { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 17px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; }
+  .not-reg-list .row .n { color: var(--text-secondary); min-width: 0; overflow-wrap: anywhere; }
+  .not-reg-list .row .c { font-weight: 600; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
 
   footer { color: var(--text-secondary); font-size: 15px; margin-top: 24px; border-top: 1px solid var(--grid); padding-top: 16px; }
   .toggle-table { font-size: 12px; color: var(--text-secondary); background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer; margin-bottom: 12px; }
